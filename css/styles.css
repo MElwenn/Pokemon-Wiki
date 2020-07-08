@@ -1,0 +1,102 @@
+body {
+    background-color: #F5F5F5;
+    color: #666666;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.heading1{
+  color: inherit;
+  text-align: center;
+}
+
+.container{
+  color: inherit;
+  background-color: #CCCCCC;
+  height: 50px;
+  margin: 10px;
+  list-style-type: none;
+  width: 100%;
+  padding: 20px;
+}
+
+/* This section is used for design of the modal only */
+html /*, body */ { /* das hier kommt spÃĪter weg */
+  font-family: Arial, sans-serif;
+}
+
+#modal-container {
+  display: none;
+}
+
+#modal-container.is-visible {
+  position: fixed;
+  padding: 20px;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+
+  /* to show it above other content */
+  z-index: 999;
+
+  /* to allow scrolling if the screen is not high enough*/
+  overflow: auto;
+
+  /* this is used to center the modal */
+  display: grid;
+  text-align: center;
+}
+
+.modal {
+  margin: auto;
+  display: inline-block;
+  box-sizing: border-box;
+  border-radius: 8px;
+  background: #F5F5F5;
+  padding: 15px;
+  width: 100%;
+  max-width: 700px;
+  text-align: left;
+}
+
+.modal-close {
+  float: right;
+  -webkit-appearance: none;
+  border: 0;
+  background: none;
+  color: #666666;
+  text-decoration: none;
+}
+
+.modal h1 {
+  margin-top: 0;
+}
+
+.modal p {
+  margin-bottom: 0;
+}
+/* design modal end */
+
+.selected{
+  border: 5px grey solid;
+}
+
+.button {
+  font-family: inherit;
+  background-color: #6699CC;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  transition: 0.2s opacity;
+  white-space: nowrap; /* aviod the button to line break */
+}

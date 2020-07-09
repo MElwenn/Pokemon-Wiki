@@ -58,18 +58,24 @@ var pokemonRepository = (function() { //This is the IIFE wrap
 //              } // return end
 
 
+
           addListItem: function (apiUrl) {
 
               var hitList = $('<ul class="pokemon-list"></ul>');
-              $('body').append(hitList);
+//              $('body').append(hitList);
+              $('body').append('<ul class="pokemon-list"></ul>');
               hitList.addClass('body');
 
+
+
               var listItem = $('<div class="container"></div>');
-              $('.container').append(listItem);
+//              $('.container').append(listItem);
+              $('.container').append('<div class="container"></div>');
               listItem.addClass('.container');
 
               var button = $('<button type="button" class="button" data-toggle="modal" data-target="#modal-container"> + apiUrl.name + </button>')
-              $('.button').append(button);
+//              $('.button').append(button);
+              $('.button').append('<button class="button"></button>');
               button.addClass('.button')
               $button.text(apiUrl.name);
 

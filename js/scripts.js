@@ -2,32 +2,10 @@
 var pokemonRepository = (function() { //This is the IIFE wrap
       var pokemonList = [];
       var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150'; //define apiURL
-      var loadList = {
+      var response = {
           name: apiUrl.name,
           detailsUrl: apiUrl.url
       };
-      // call pokemon apiURL using jQuery (Task 1.9)
-//      $.ajax('https://pokeapi.co/api/v2/pokemon/?limit=150', {
-//        dataType: 'json' }).then(function (responseJSON) {
-//          console.log(responseJSON); // This is the parsed JSON response
-//      });
-/*
-function response() {
-    return $.ajax(apiUrl, {
-        dataType: 'json'
-    }).then(function(pokemonList) {
-        $.each(pokemonList.results, function (pokemonList, apiUrl) {
-            function loadList() {
-                name: apiUrl.name,
-                detailsUrl: apiUrl.url
-            }
-        })
-    }.catch(function(e) { //ERROR handling
-        console.error(e);
-    }));
-} // response end
-
-*/
 
       function loadList() { // function to load the list of Pokemons
           return $.ajax('https://pokeapi.co/api/v2/pokemon/?limit=150', {
@@ -158,3 +136,28 @@ $('button').on('click', function (event) {
         }) // .then(function) end
     } // apiUrl end
 }); // button.click end
+
+//***********
+
+// call pokemon apiURL using jQuery (Task 1.9)
+//      $.ajax('https://pokeapi.co/api/v2/pokemon/?limit=150', {
+//        dataType: 'json' }).then(function (responseJSON) {
+//          console.log(responseJSON); // This is the parsed JSON response
+//      });
+/*
+function response() {
+return $.ajax(apiUrl, {
+  dataType: 'json'
+}).then(function(pokemonList) {
+  $.each(pokemonList.results, function (pokemonList, apiUrl) {
+      function loadList() {
+          name: apiUrl.name,
+          detailsUrl: apiUrl.url
+      }
+  })
+}.catch(function(e) { //ERROR handling
+  console.error(e);
+}));
+} // response end
+
+*/

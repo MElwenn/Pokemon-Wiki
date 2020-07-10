@@ -11,7 +11,7 @@ var pokemonRepository = (function() { //This is the IIFE wrap
 //        dataType: 'json' }).then(function (responseJSON) {
 //          console.log(responseJSON); // This is the parsed JSON response
 //      });
-
+/*
 function response() {
     return $.ajax(apiUrl, {
         dataType: 'json'
@@ -27,8 +27,8 @@ function response() {
     }));
 } // response end
 
+*/
 
-/*
       function loadList() { // function to load the list of Pokemons
           return $.ajax('https://pokeapi.co/api/v2/pokemon/?limit=150', {
               dataType: 'json' }).then(function (responseJSON) {
@@ -48,7 +48,7 @@ function response() {
 //                  add(item); // adds the object to the loadList ("item" rather than " "Pokemon")
               });
       } // function loadList end
-*/
+
       function loadDetails(pokemonList) { // load Poekemon Details
           var apiUrl = pokemonList.detailsUrl;
           return $.ajax(apiUrl).then(function(apiUrl) {

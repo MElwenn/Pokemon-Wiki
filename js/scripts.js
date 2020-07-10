@@ -79,36 +79,36 @@ var pokemonRepository = (function() { //This is the IIFE wrap
       } // load Poekemon Details end
 */
 
-//      function showDetails(pokemon) {
-//          pokemonRepository
-//              .loadDetails(pokemon).then(function() {
-//                  return pokemon;
-//              }).then(function() {
-//                  showModal(pokemon);
-//              }).catch(function(err) {
-//                  console.log('Caught an error:' + err.statusText);
-//              }); //ERROR handling
-//      } // showDetails append
+      function showDetails(pokemon) {
+          pokemonRepository
+              .loadDetails(pokemon).then(function() {
+                  return pokemon;
+              }).then(function() {
+                  showModal(pokemon);
+              }).catch(function(err) {
+                  console.log('Caught an error:' + err.statusText);
+              }); //ERROR handling
+      } // showDetails append
 
-//      function showModal(mokemon) {
+      function showModal(mokemon) {
           // Clear all existing modal content
-//          $modalContainer.innerHTML = '';
+          $modalContainer.innerHTML = '';
 
-//          var modal = $('<div id="modal-container"></div>');
-//          $('modal').append(modal);
+          var modal = $('<div id="modal-container"></div>');
+          $('modal').append(modal);
 
           // Add the new modal content
-//          $('pok-title').text(pokemon.name);
+          $('pok-title').text(pokemon.name);
 
-//          $('close-modal').text('Close').click(() => {
-//                modal.remove(modal);
-//          });
+          $('close-modal').text('Close').click(() => {
+                modal.remove(modal);
+          });
 
-//          $('<p id="pok-height">Height: </p>').text(pokemon.height);
+          $('<p id="pok-height">Height: </p>').text(pokemon.height);
 
-//          $('<p id="pok-weight">Weight: </p>').text(pokemon.weight);
+          $('<p id="pok-weight">Weight: </p>').text(pokemon.weight);
 
-//      } // showModal end
+      } // showModal end
 
       return { //return all items from the pokemonList to make it available outside the IIFE
           add: add,
@@ -127,7 +127,7 @@ pokemonRepository.loadList().then(function(){
     });
 })
 
-  //This code is deemed too vast
+/*  //This code is deemed too vast
 $('button').on('click', function (event) {
 
     var $modalContainer = $('<div id = "#modal-container" class ="#modal-container.is-visible"</div>');
@@ -163,3 +163,4 @@ $('button').on('click', function (event) {
         }) // .then(function) end
     } // apiUrl end
 }); // button.click end
+*/

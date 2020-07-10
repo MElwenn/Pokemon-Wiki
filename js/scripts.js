@@ -13,6 +13,26 @@ var pokemonRepository = (function() { //This is the IIFE wrap
           pokemonList.push(apiUrl);
       }
 
+      function addListItem(apiUrl) {
+
+          var hitList = $('<ul class="pokemon-list"></ul>');
+//              $('body').append(hitList);
+          $('body').append('<ul class="pokemon-list"></ul>');
+          hitList.addClass('body');
+
+          var listItem = $('<div class="container"></div>');
+//              $('.container').append(listItem);
+          $('.container').append('<div class="container"></div>');
+          listItem.addClass('.container');
+
+          var button = $('<button type="button" class="button" data-toggle="modal" data-target="#modal-container"> + apiUrl.name + </button>')
+//              $('.button').append(button);
+          $('.button').append('<button class="button"></button>');
+          button.addClass('.button')
+          $button.text(apiUrl.name);
+
+      } //addListItem end
+
       return {
           add: loadList,  //load Pokemon List
           getAll: function() {
@@ -57,67 +77,44 @@ var pokemonRepository = (function() { //This is the IIFE wrap
 //                  pokemonList.types = details.types;
 //              } // return end
 
-
-
-          addListItem: function (apiUrl) {
-
-              var hitList = $('<ul class="pokemon-list"></ul>');
-//              $('body').append(hitList);
-              $('body').append('<ul class="pokemon-list"></ul>');
-              hitList.addClass('body');
-
-
-
-              var listItem = $('<div class="container"></div>');
-//              $('.container').append(listItem);
-              $('.container').append('<div class="container"></div>');
-              listItem.addClass('.container');
-
-              var button = $('<button type="button" class="button" data-toggle="modal" data-target="#modal-container"> + apiUrl.name + </button>')
-//              $('.button').append(button);
-              $('.button').append('<button class="button"></button>');
-              button.addClass('.button')
-              $button.text(apiUrl.name);
-
-          } //addListItem end
       }; // return end
-
-      $('input').on('click', function (event) {
-
-          var $modalContainer = $('<div id = "#modal-container" class ="#modal-container.is-visible"</div>');
-          $('$modalContainer').append($modalContainer);
-          $modalContainer.addClass('#modal-container.is-visible');
-
-          !function(apiUrl) {
-              pokemonList.loadDetails(apiUrl).then(function() {
-
-                  var modal = $('<div id="modal-container"></div>');
-                  $('modal').append(modal);
-                  modal.addClass('.modal');
-
-                  var closeButtonElement = $('<button id="close-modal" class=".modal-close">Close</button>');
-                  $('closeButtonElement').append(closeButtonElement);
-                  closeButtonElement.addClass('.modal-close');
-
-                  var titleElement = $('<div id="pok-title"></div>');
-                  $('titleElement').append(titleElement);
-                  titleElement.addClass('.modal h1');
-                  titleElement.text(apiUrl.name);
-
-                  var heightElement = $('<p>Height: </p>');
-                  $('heightElement').append(heightElement);
-                  heightElement.addClass('.modal p');
-                  heightElement.text(apiUrl.height);
-
-                  var weightElement = $('<p>Weight: </p>');
-                  $('weightElement').append(weightElement);
-                  weightElement.addClass('.modal p');
-                  weightElement.text(apiUrl.weight);
-
-              }) // .then(function) end
-          } // apiUrl end
-      }); // button.click end
 
 })(); // Wrapping IIFE end
 
 // outside IIFE-Wrap
+
+$('button').on('click', function (event) {
+
+    var $modalContainer = $('<div id = "#modal-container" class ="#modal-container.is-visible"</div>');
+    $('$modalContainer').append($modalContainer);
+    $modalContainer.addClass('#modal-container.is-visible');
+
+    !function(apiUrl) {
+        pokemonList.loadDetails(apiUrl).then(function() {
+
+            var modal = $('<div id="modal-container"></div>');
+            $('modal').append(modal);
+            modal.addClass('.modal');
+
+            var closeButtonElement = $('<button id="close-modal" class=".modal-close">Close</button>');
+            $('closeButtonElement').append(closeButtonElement);
+            closeButtonElement.addClass('.modal-close');
+
+            var titleElement = $('<div id="pok-title"></div>');
+            $('titleElement').append(titleElement);
+            titleElement.addClass('.modal h1');
+            titleElement.text(apiUrl.name);
+
+            var heightElement = $('<p>Height: </p>');
+            $('heightElement').append(heightElement);
+            heightElement.addClass('.modal p');
+            heightElement.text(apiUrl.height);
+
+            var weightElement = $('<p>Weight: </p>');
+            $('weightElement').append(weightElement);
+            weightElement.addClass('.modal p');
+            weightElement.text(apiUrl.weight);
+
+        }) // .then(function) end
+    } // apiUrl end
+}); // button.click end

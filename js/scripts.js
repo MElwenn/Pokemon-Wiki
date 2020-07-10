@@ -2,31 +2,69 @@
 var pokemonRepository = (function() { //This is the IIFE wrap
       var pokemonList = [];
       var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150'; //define apiURL
-      var response = {
-          name: apiUrl.name,
-          detailsUrl: apiUrl.url
-      };
+      var $response = $('.pokemon-list');
+      var modalContainer = ('#modal-container');
+
+      function add (pokemon) { // function to load the list of Pokemons
+          pokemonList.push(pokemon);
+          addListItem(pokemon);
+      }
+
+      function getAll() {
+          return pokemonList;
+      }
+
+      function addListItem(pokemon) { //addListItem
+
+          var $listItem = $('<li class="container"></li>');
+          $response.append($listItem);
+
+          var $button = $(
+              '<button type="button" class="button" data-toggle="modal" data-target="#modal-container">'
+                  + pokemon.name +
+              '</button>'
+          );
+          $listItem.append($button);
+
+          $button.click(function(){
+              showDetails(pokemon);
+          });
+      } //addListItem end
 
       function loadList() { // function to load the list of Pokemons
-          return $.ajax('https://pokeapi.co/api/v2/pokemon/?limit=150', {
-              dataType: 'json' }).then(function (responseJSON) {
-                  console.log(responseJSON); // This is the parsed JSON response
-              }).then(function(json) { // if promise resolved, all data passed in resolved function is availabe here
-                  $('loadList').each(function (i) {
-                      var newElement = $('<div class="new-class">Content is here!</div>');
-                      $('body').append(newElement);
-                      var results = $(this).val();
-//                      var loadListName = $(this).attr('name');
-                      results.get(name, url);
+          return $.ajax(apiUrl, {
+              dataType: 'json'
+          }).then(function (responseJSON) {
 
-                  });//.catch(function(e) { //ERROR handling
+                responseJSON.results.forEach(function(item) {
+                    var pokemon = {
+                        name: item.name,
+                        detailsUrl: item.url
+                    };
+                    add(pokemon);
+                });
+          }).catch(function(err) {
+              console.log('Caught an error:' + err.statusText);
+          }); //ERROR handling
+      }
 
-//                        console.error(e);
-//                    });
-//                  add(item); // adds the object to the loadList ("item" rather than " "Pokemon")
+      function loadDetails(pokemon) { // load Poekemon Details
+          var url = pokemon.detailsUrl;
+          return $.ajax(url, {
+              dataType: 'json'
+          }).then(function(responseJSON) {
+              return responseJSON;
+          }).then(function(details){
+              pokemon.id = details.id;
+              pokemon.imageUrl = ('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + details.id + '.png');
+              pokemon.height = ('Height: ') + details.height + ('dm');
+              pokemon.weight = ('Weight: ') + details.weight + ('dg');
+              pokemon.types = details.types.map(function(object) {
+                  return object.type.name;
               });
-      } // function loadList end
-
+          })
+      } // load Poekemon Details end
+/*
       function loadDetails(pokemonList) { // load Poekemon Details
           var apiUrl = pokemonList.detailsUrl;
           return $.ajax(apiUrl).then(function(apiUrl) {
@@ -39,50 +77,38 @@ var pokemonRepository = (function() { //This is the IIFE wrap
               console.error(e);
           });
       } // load Poekemon Details end
+*/
 
-      function getAll() {
-          return pokemonList;
-      }
+//      function showDetails(pokemon) {
+//          pokemonRepository
+//              .loadDetails(pokemon).then(function() {
+//                  return pokemon;
+//              }).then(function() {
+//                  showModal(pokemon);
+//              }).catch(function(err) {
+//                  console.log('Caught an error:' + err.statusText);
+//              }); //ERROR handling
+//      } // showDetails append
 
-      function add (apiUrl) { // function to load the list of Pokemons
-          pokemonList.push(apiUrl);
-          addListItem(apiUrl);
-      }
+//      function showModal(mokemon) {
+          // Clear all existing modal content
+//          $modalContainer.innerHTML = '';
 
-      function addListItem(apiUrl) { //addListItem
+//          var modal = $('<div id="modal-container"></div>');
+//          $('modal').append(modal);
 
-          var hitList = $('<ul class="pokemon-list"></ul>');
-//              $('body').append(hitList);
-          $('body').append('<ul class="pokemon-list"></ul>');
-          hitList.addClass('body');
+          // Add the new modal content
+//          $('pok-title').text(pokemon.name);
 
-          var listItem = $('<div class="container"></div>');
-//              $('.container').append(listItem);
-          $('.container').append('<div class="container"></div>');
-          listItem.addClass('.container');
+//          $('close-modal').text('Close').click(() => {
+//                modal.remove(modal);
+//          });
 
-          var button = $('<button type="button" class="button" data-toggle="modal" data-target="#modal-container"> + apiUrl.name + </button>')
-//              $('.button').append(button);
-          $('.button').append('<button class="button"></button>');
-          button.addClass('.button')
-          button.text(apiUrl.name);
+//          $('<p id="pok-height">Height: </p>').text(pokemon.height);
 
-      } //addListItem end
+//          $('<p id="pok-weight">Weight: </p>').text(pokemon.weight);
 
-      function response() {
-          return $.ajax(apiUrl, {
-              dataType: 'json'
-          }).then(function(pokemonList) {
-              $.each(pokemonList.results, function (pokemonList, apiUrl) {
-                  loadList({
-                      name: apiUrl.name,
-                      detailsUrl: apiUrl.url
-                  })
-              })
-          }.catch(function(e) { //ERROR handling
-              console.error(e);
-          }));
-      } // response end
+//      } // showModal end
 
       return { //return all items from the pokemonList to make it available outside the IIFE
           add: add,
@@ -101,6 +127,7 @@ pokemonRepository.loadList().then(function(){
     });
 })
 
+  //This code is deemed too vast
 $('button').on('click', function (event) {
 
     var $modalContainer = $('<div id = "#modal-container" class ="#modal-container.is-visible"</div>');
@@ -136,28 +163,3 @@ $('button').on('click', function (event) {
         }) // .then(function) end
     } // apiUrl end
 }); // button.click end
-
-//***********
-
-// call pokemon apiURL using jQuery (Task 1.9)
-//      $.ajax('https://pokeapi.co/api/v2/pokemon/?limit=150', {
-//        dataType: 'json' }).then(function (responseJSON) {
-//          console.log(responseJSON); // This is the parsed JSON response
-//      });
-/*
-function response() {
-return $.ajax(apiUrl, {
-  dataType: 'json'
-}).then(function(pokemonList) {
-  $.each(pokemonList.results, function (pokemonList, apiUrl) {
-      function loadList() {
-          name: apiUrl.name,
-          detailsUrl: apiUrl.url
-      }
-  })
-}.catch(function(e) { //ERROR handling
-  console.error(e);
-}));
-} // response end
-
-*/

@@ -62,8 +62,12 @@ var pokemonRepository = (function() { //This is the IIFE wrap
               pokemon.types = details.types.map(function(object) {
                   return object.type.name;
               });
-          })
+          }).catch(function(err) {
+                  console.log('Caught an error:' + err.statusText);
+          }); //ERROR handling
+
       } // load Poekemon Details end
+
 /*
       function loadDetails(pokemonList) { // load Poekemon Details
           var apiUrl = pokemonList.detailsUrl;
@@ -83,14 +87,15 @@ var pokemonRepository = (function() { //This is the IIFE wrap
           pokemonRepository
               .loadDetails(pokemon).then(function() {
                   return pokemon;
-              }).then(function() {
+              }).then(function(pokemon) {
                   showModal(pokemon);
               }).catch(function(err) {
                   console.log('Caught an error:' + err.statusText);
               }); //ERROR handling
       } // showDetails append
 
-      function showModal(mokemon) {
+
+      function showModal(pokemon) {
           // Clear all existing modal content
           $modalContainer.innerHTML = '';
 
@@ -116,14 +121,15 @@ var pokemonRepository = (function() { //This is the IIFE wrap
           addListItem: addListItem,
           loadList: loadList,
           loadDetails: loadDetails, //add loadDetails
+          showModal: showModal
       }; // return end
 
 })(); // Wrapping IIFE end
 
 // outside IIFE-Wrap
 pokemonRepository.loadList().then(function(){
-    pokemonRepository.getAll().forEach(function (item) {
-        pokemonRepository.addListItem(item);
+    pokemonRepository.getAll().forEach(function (pokemon) {
+        pokemonRepository.addListItem(pokemon);
     });
 })
 

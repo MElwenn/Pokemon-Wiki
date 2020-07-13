@@ -44,7 +44,8 @@ var pokemonRepository = (function() { //This is the IIFE wrap
                 });
             }).catch(function(e) { //ERROR handling
                 console.error(e);
-            });      }
+            });
+      }
 
       function loadDetails(pokemon) { // load Poekemon Details
           var url = pokemon.detailsUrl;
@@ -60,9 +61,9 @@ var pokemonRepository = (function() { //This is the IIFE wrap
               pokemon.types = details.types.map(function(object) {
                   return object.type.name;
               });
-          }).catch(function(err) {
-                  console.log('Caught an error:' + err.statusText);
-          }); //ERROR handling
+          }).catch(function(e) { //ERROR handling
+              console.error(e);
+          });
 
       } // load Poekemon Details end
 
@@ -70,9 +71,9 @@ var pokemonRepository = (function() { //This is the IIFE wrap
           pokemonRepository
               .loadDetails(pokemon).then(function() {
                   showModal(pokemon);
-              }).catch(function(err) {
-                  console.log('Caught an error:' + err);
-              }); //ERROR handling
+                }).catch(function(e) { //ERROR handling
+                    console.error(e);
+                });
       } // showDetails append
 
 

@@ -90,11 +90,13 @@ var pokemonRepository = (function() { //This is the IIFE wrap
         closeButtonElement.on("click", hideModal);
 
         // Add the new modal content
-        titleElement.text(pokemon.name); // <h1>PokemonName</h1>
+        titleElement.text(pokemon.name);
+        imageElement.img(pokemon.imageUrl);
         heightElement.text(pokemon.height);
         weightElement.text(pokemon.weight);
 
         modal.append(titleElement);
+        modal.append(imageElement);
         modal.append(heightElement);
         modal.append(weightElement);
         modal.append(closeButtonElement);

@@ -62,9 +62,9 @@ var pokemonRepository = (function() { //This is the IIFE wrap
               pokemon.types = details.types.map(function(object) {
                   return object.type.name;
               });
-          }).catch(function(err) {
-                  console.log('Caught an error:' + err.statusText);
-          }); //ERROR handling
+          }).catch(function(e) { //ERROR handling
+              console.error(e);
+          });
 
       } // load Poekemon Details end
 
@@ -89,9 +89,9 @@ var pokemonRepository = (function() { //This is the IIFE wrap
                   return pokemon;
               }).then(function(pokemon) {
                   showModal(pokemon);
-              }).catch(function(err) {
-                  console.log('Caught an error:' + err.statusText);
-              }); //ERROR handling
+                }).catch(function(e) { //ERROR handling
+                    console.error(e);
+                });
       } // showDetails append
 
 

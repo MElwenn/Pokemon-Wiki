@@ -77,10 +77,9 @@ var pokemonRepository = (function() { //This is the IIFE wrap
       } // showDetails end'
 /*
       function showDetails(pokemon) {
-          pokemonRepository
-              .loadDetails(pokemon).then(function() {
-                  return pokemon;
-              }).then(function(pokemon) {
+          pokemonRepository.loadDetails(pokemon).then(function() {
+                  return pokemon;             //this was too much
+              }).then(function(pokemon) {     //this was too much
                   showModal(pokemon);
                 }).catch(function(e) { //ERROR handling
                     console.error(e);
@@ -90,7 +89,7 @@ var pokemonRepository = (function() { //This is the IIFE wrap
 
       function showModal(pokemon) { //stimmt
           // Clear all existing modal content
-          $modalContainer.empty();
+          //$modalContainer.empty();
 
           // create the new modal content by rendering
           var modal = $('<div id="modal-container"></div>');

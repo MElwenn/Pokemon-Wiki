@@ -92,6 +92,7 @@ var pokemonRepository = (function() { //This is the IIFE wrap
         // Add the new modal content
         titleElement.text(pokemon.name);
 //        imageElement.img(pokemon.imageUrl); this notation is NOT correct
+        imageElement.attr('src', pokemon.imageUrl);
         heightElement.text(pokemon.height);
         weightElement.text(pokemon.weight);
 

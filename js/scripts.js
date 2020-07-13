@@ -3,7 +3,7 @@ var pokemonRepository = (function() { //This is the IIFE wrap
       var pokemonList = [];
       var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150'; //define apiURL
       var $response = $('.pokemon-list');
-      var modalContainer = ('#modal-container');
+      var $modalContainer = ('#modal-container');
 
       function add (pokemon) { // function to load the list of Pokemons
           pokemonList.push(pokemon);
@@ -30,7 +30,7 @@ var pokemonRepository = (function() { //This is the IIFE wrap
               showDetails(pokemon);
           });
       } //addListItem end
-
+/* all correct up to this point */
       function loadList() { // function to load the list of Pokemons
           return $.ajax(apiUrl, {
               dataType: 'json'
@@ -95,25 +95,36 @@ var pokemonRepository = (function() { //This is the IIFE wrap
       } // showDetails append
 
 
-      function showModal(pokemon) {
+      function showModal(pokemon) { //stimmt
           // Clear all existing modal content
-          $modalContainer.innerHTML = '';
+          $modalContainer.empty();
 
+          // create the new modal content by rendering
           var modal = $('<div id="modal-container"></div>');
-          $('modal').append(modal);
+          var titleElement = $('<h1></h1>');
+          var heightElement = $('<p></p>');
+          var weightElement = $('<p></p>');
+          var closeButtonElement = $('<button class="modal-close" type="modal-close"></button>');
+          closeButtonElement.on('click', hideModal);
 
-          // Add the new modal content
-          $('pok-title').text(pokemon.name);
+          // add new modal content
+          titleElement.text(pokemon.name);
+          heightElement.text(pokemon.height);
+          weightElement.text(pokemon.weight);
 
-          $('close-modal').text('Close').click(() => {
-                modal.remove(modal);
-          });
+          // add content to modal ("child" of modal)
+          modal.append(titleElement);
+          modal.append(heightElement);
+          modal.append(weightElement);
+          modal.append(closeButtonElement);
 
-          $('<p id="pok-height">Height: </p>').text(pokemon.height);
-
-          $('<p id="pok-weight">Weight: </p>').text(pokemon.weight);
-
+          $modalContainer.append(modal);
+          $modalContainer.addClass("is-visible");
       } // showModal end
+
+      function hideModal() {
+          $modalContainer.removeClass("is-visible");
+      }
 
       return { //return all items from the pokemonList to make it available outside the IIFE
           add: add,

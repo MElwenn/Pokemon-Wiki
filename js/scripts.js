@@ -89,7 +89,7 @@ var pokemonRepository = (function() { //This is the IIFE wrap
 
       function showModal(pokemon) { //stimmt
           // Clear all existing modal content
-//        /*  // $modalContainer.empty();  */
+          $modalContainer.empty();
 
           // create the new modal content by rendering
           var modal = $('<div id="modal-container"></div>');
@@ -110,7 +110,7 @@ var pokemonRepository = (function() { //This is the IIFE wrap
           modal.append(weightElement);
           modal.append(closeButtonElement);
 
-//          $modalContainer.append(modal); // commenting // $modalContainer.empty(); out, the same applies to line 113 "$modalContainer.append(modal); is not a function"
+          $modalContainer.append(modal); // commenting // $modalContainer.empty(); out, the same applies to line 113 "$modalContainer.append(modal); is not a function"*/
           $modalContainer.addClass("is-visible");
       } // showModal end
 

@@ -1,4 +1,4 @@
-/* wrapping all global variables in 'Immediately Invoked Function Expression (or IIFE)' to avoid external code conflicts */
+/* wrapping all global variables in 'Immediaty Invoked Function Expression (or IIFE)' to avoid external code conflicts */
 var pokemonRepository = (function() { //This is the IIFE wrap
       var pokemonList = [];
       var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150'; //define apiURL
@@ -67,21 +67,6 @@ var pokemonRepository = (function() { //This is the IIFE wrap
 
       } // load Poekemon Details end
 
-/*
-      function loadDetails(pokemonList) { // load Poekemon Details
-          var apiUrl = pokemonList.detailsUrl;
-          return $.ajax(apiUrl).then(function(apiUrl) {
-              pokemonList.id = details.id;
-              pokemonList.imageUrl = ('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + details.id + '.png');
-              pokemonList.height = ('Height: ') + details.height + ('dm');
-              pokemonList.weight = ('Weight: ') + details.weight + ('dg');
-              pokemonList.types = details.types;
-          }).catch(function(e) { // ERROR handling
-              console.error(e);
-          });
-      } // load Poekemon Details end
-*/
-
       function showDetails(pokemon) {
           pokemonRepository
               .loadDetails(pokemon).then(function() {
@@ -97,21 +82,21 @@ var pokemonRepository = (function() { //This is the IIFE wrap
           $modalContainer.empty();
 
           var modal = $('<div class="modal"></div>');
-          var titleEl = $('<h1></h1>');
-          var heightEl = $('<p></p>');
-          var weightEl = $('<p></p>');
-          var closeButtonEl = $('<button class="btn btn-secondary" type="modal-close"></button>').text("Close");
-          closeButtonEl.on("click", hideModal);
+          var titleElement = $('<h1></h1>');
+          var heightElement = $('<p></p>');
+          var weightElement = $('<p></p>');
+          var closeButtonElement = $('<button class="btn btn-secondary" type="modal-close"></button>').text("Close");
+          closeButtonElement.on("click", hideModal);
 
           // Add the new modal content
-          titleEl.text(pokemon.name); // <h1>PokemonName</h1>
-          heightEl.text(pokemon.height);
-          weightEl.text(pokemon.weight);
+          titleElement.text(pokemon.name); // <h1>PokemonName</h1>
+          heightElement.text(pokemon.height);
+          weightElement.text(pokemon.weight);
 
-          modal.append(titleEl);
-          modal.append(heightEl);
-          modal.append(weightEl);
-          modal.append(closeButtonEl);
+          modal.append(titleElement);
+          modal.append(heightElement);
+          modal.append(weightElement);
+          modal.append(closeButtonElement);
 
           $modalContainer.append(modal);
           $modalContainer.addClass("is-visible");

@@ -81,6 +81,12 @@ html /*, body */ { /* das hier kommt spÃĪter weg */
 .modal p {
   margin-bottom: 0;
 }
+
+.img {
+	width: 40%;
+	float: right;
+}
+
 /* design modal end */
 
 .selected{

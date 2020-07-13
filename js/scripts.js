@@ -83,6 +83,7 @@ var pokemonRepository = (function() { //This is the IIFE wrap
 
           var modal = $('<div class="modal"></div>');
           var titleElement = $('<h1></h1>');
+          var imageElement = $('<img>');
           var heightElement = $('<p></p>');
           var weightElement = $('<p></p>');
           var closeButtonElement = $('<button class="btn btn-secondary" type="modal-close"></button>').text("Close");

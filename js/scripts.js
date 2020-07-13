@@ -110,7 +110,7 @@ var pokemonRepository = (function() { //This is the IIFE wrap
           modal.append(weightElement);
           modal.append(closeButtonElement);
 
-          $modalContainer.append(modal); // commenting // $modalContainer.empty(); out, the same applies to line 113 "$modalContainer.append(modal); is not a function"*/
+          $modalContainer.append(modal);
           $modalContainer.addClass("is-visible");
       } // showModal end
 

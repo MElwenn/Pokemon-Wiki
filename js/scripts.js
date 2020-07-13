@@ -83,7 +83,8 @@ var pokemonRepository = (function() { //This is the IIFE wrap
 
           var modal = $('<div class="modal"></div>');
           var titleElement = $('<h1></h1>');
-          var imageElement = $('<img class="img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"  + details.id + '.png'/>');
+          var imageElement = $('<img class="img"/>');
+//          var imageElement = $('<img class="img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"  + details.id + '.png'/>');
           var heightElement = $('<p></p>');
           var weightElement = $('<p></p>');
           var closeButtonElement = $('<button class="modal-close" type="modal-close"></button>').text("Close");

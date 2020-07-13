@@ -42,10 +42,9 @@ var pokemonRepository = (function() { //This is the IIFE wrap
                     };
                     add(pokemon);
                 });
-          }).catch(function(err) {
-              console.log('Caught an error:' + err.statusText);
-          }); //ERROR handling
-      }
+            }).catch(function(e) { //ERROR handling
+                console.error(e);
+            });      }
 
       function loadDetails(pokemon) { // load Poekemon Details
           var url = pokemon.detailsUrl;

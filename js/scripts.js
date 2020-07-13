@@ -89,7 +89,7 @@ var pokemonRepository = (function() { //This is the IIFE wrap
 
       function showModal(pokemon) { //stimmt
           // Clear all existing modal content
-          //$modalContainer.empty();
+          // $modalContainer.empty();
 
           // create the new modal content by rendering
           var modal = $('<div id="modal-container"></div>');

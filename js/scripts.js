@@ -84,7 +84,7 @@ var pokemonRepository = (function() { //This is the IIFE wrap
         var modal = $('<div class="modal"></div>');
         var titleElement = $('<h1></h1>');
 //        var imageElement = $('<img>');
-        var imageElement = $('img').ready(pokemon);
+        var imageElement = $('<img class="img"/>').ready(pokemon);
         var heightElement = $('<p></p>');
         var weightElement = $('<p></p>');
         var closeButtonElement = $('<button class="modal-close" type="modal-close"></button>').text("Close");
@@ -92,6 +92,7 @@ var pokemonRepository = (function() { //This is the IIFE wrap
 
         // Add the new modal content
         titleElement.text(pokemon.name);
+        imageElement.text(pokemon.imageUrl);
 //        imageElement.img(pokemon.imageUrl); this notation is NOT correct
 //        imageElement.attr('src', pokemon.imageUrl);  this notation result in listItem-loading one by one
         heightElement.text(pokemon.height);

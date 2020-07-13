@@ -68,21 +68,6 @@ var pokemonRepository = (function() { //This is the IIFE wrap
 
       } // load Poekemon Details end
 
-/*
-      function loadDetails(pokemonList) { // load Poekemon Details
-          var apiUrl = pokemonList.detailsUrl;
-          return $.ajax(apiUrl).then(function(apiUrl) {
-              pokemonList.id = details.id;
-              pokemonList.imageUrl = ('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + details.id + '.png');
-              pokemonList.height = ('Height: ') + details.height + ('dm');
-              pokemonList.weight = ('Weight: ') + details.weight + ('dg');
-              pokemonList.types = details.types;
-          }).catch(function(e) { // ERROR handling
-              console.error(e);
-          });
-      } // load Poekemon Details end
-*/
-
       function showDetails(pokemon) {
           pokemonRepository
               .loadDetails(pokemon).then(function() {

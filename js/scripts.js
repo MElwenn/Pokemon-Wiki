@@ -92,7 +92,8 @@ var pokemonRepository = (function() { //This is the IIFE wrap
 
         // Add the new modal content
         titleElement.text(pokemon.name);
-        imageElement.text(pokemon.imageUrl);
+        imageElement.src = pokemon.imageUrl
+//        imageElement.text(pokemon.imageUrl);  just to give it a try, certainly does not work
 //        imageElement.img(pokemon.imageUrl); this notation is NOT correct
 //        imageElement.attr('src', pokemon.imageUrl);  this notation result in listItem-loading one by one
         heightElement.text(pokemon.height);

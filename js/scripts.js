@@ -92,11 +92,11 @@ var pokemonRepository = (function() { //This is the IIFE wrap
           $modalContainer.empty();
 
           // create the new modal content by rendering
-          var modal = $('<div id="modal-container"></div>');
+          var modal = $('<div classs="modal"></div>');
           var titleElement = $('<h1></h1>');
           var heightElement = $('<p></p>');
           var weightElement = $('<p></p>');
-          var closeButtonElement = $('<button class="modal-close" type="modal-close"></button>');
+          var closeButtonElement = $('<button class="modal-close" type="modal-close"></button>').text("Close");
           closeButtonElement.on('click', hideModal);
 
           // add new modal content
@@ -109,7 +109,6 @@ var pokemonRepository = (function() { //This is the IIFE wrap
           modal.append(heightElement);
           modal.append(weightElement);
           modal.append(closeButtonElement);
-
           $modalContainer.append(modal);
           $modalContainer.addClass("is-visible");
       } // showModal end
@@ -123,7 +122,7 @@ var pokemonRepository = (function() { //This is the IIFE wrap
           getAll: getAll,
           addListItem: addListItem,
           loadList: loadList,
-          loadDetails: loadDetails, //add loadDetails
+          loadDetails: loadDetails, 
           showModal: showModal
       }; // return end
 

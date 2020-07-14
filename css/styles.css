@@ -66,6 +66,7 @@ html /*, body */ { /* das hier kommt spÃĪter weg */
 }
 
 .modal-close {
+  top: 0;
   float: right;
   -webkit-appearance: none;
   border: 0;
@@ -83,7 +84,7 @@ html /*, body */ { /* das hier kommt spÃĪter weg */
 }
 
 .img {
-	width: 25%;
+	width: 30%;
 	float: right;
   background-color: #6699CC;
 }

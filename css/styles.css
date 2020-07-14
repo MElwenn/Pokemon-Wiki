@@ -66,9 +66,8 @@ html /*, body */ { /* das hier kommt spÃĪter weg */
 }
 
 .modal-close {
-  position: fixed;
+  float: right;
   top: 0;
-  right: 0;
   -webkit-appearance: none;
   border: 0;
   background: none;

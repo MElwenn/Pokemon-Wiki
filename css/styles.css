@@ -67,7 +67,6 @@ modal {
 }
 
 .modal-close {
-  position: relative;
   float: right;
   top: 0;
   -webkit-appearance: none;

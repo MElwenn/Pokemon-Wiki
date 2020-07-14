@@ -67,7 +67,7 @@ html /*, body */ { /* das hier kommt spÃĪter weg */
 
 .modal-close {
   top: 0;
-  right: 0;
+  float: right;
   -webkit-appearance: none;
   border: 0;
   background: none;

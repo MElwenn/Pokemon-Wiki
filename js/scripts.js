@@ -83,19 +83,16 @@ var pokemonRepository = (function() { //This is the IIFE wrap
 
         var modal = $('<div class="modal"></div>');
         var titleElement = $('<h1></h1>');
-//        var imageElement = $('<img>');
+        var closeButtonElement = $('<button class="modal-close" type="modal-close"></button>').text("Close");
+        closeButtonElement.on("click", hideModal);
         var imageElement = $('<img class="img"/>').ready(pokemon);
         var heightElement = $('<p></p>');
         var weightElement = $('<p></p>');
-        var closeButtonElement = $('<button class="modal-close" type="modal-close"></button>').text("Close");
-        closeButtonElement.on("click", hideModal);
+
 
         // Add the new modal content
         titleElement.text(pokemon.name);
-//        imageElement.src = pokemon.imageUrl  does not throw an error but doen't work either
-//        imageElement.text(pokemon.imageUrl);  just to give it a try, certainly does not work
-//        imageElement.img(pokemon.imageUrl); this notation is NOT correct
-        imageElement.attr('src', pokemon.imageUrl);  //this notation result in listItem-loading one by one
+        imageElement.attr('src', pokemon.imageUrl);
         heightElement.text(pokemon.height);
         weightElement.text(pokemon.weight);
 

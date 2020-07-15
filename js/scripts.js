@@ -102,7 +102,7 @@ var pokemonRepository = (function() { //This is the IIFE wrap
             var modalContent = $('<div class="modal-content"></div>');  // Wrap around the modal content
               var modlaHeader = $('<div class="modal-header"></div>');
                 var titleElement = $('<h5 class="modal-title">Modal title</h5>');
-                var closeButtonElementHeader = $('<button type="button" class="close" data-dismiss="modal" aria-label="Close">Pokemon Nema</div>');
+                var closeButtonElementHeader = $('<button type="button" class="close" data-dismiss="modal" aria-label="Close">x</div>');
                   var modalAriaHidden = $('<span aria-hidden="true">&times;</span>');
 //                </button>
 //              </div>

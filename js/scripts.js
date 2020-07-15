@@ -26,7 +26,7 @@ var pokemonRepository = (function() { //This is the IIFE wrap
 //                + pokemon.name +
 //            '</button>'
 //        );
-        var $button = $('<button type="button" role="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-container">Primary'
+        var $button = $('<button type="button" role="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-container">'
                 + pokemon.name +
               '</button>'
         );
@@ -85,7 +85,7 @@ var pokemonRepository = (function() { //This is the IIFE wrap
     function showModal(pokemon) {
         // Clear all existing modal content
         $modalContainer.empty();
-
+/*      //This is the old jQuery Modal
         var modal = $('<div class="modal"></div>');
         var titleElement = $('<h1></h1>');
         var closeButtonElement = $('<button class="modal-close" type="modal-close"></button>').text("Close");
@@ -93,7 +93,27 @@ var pokemonRepository = (function() { //This is the IIFE wrap
         var imageElement = $('<img class="img"/>').ready(pokemon);
         var heightElement = $('<p></p>');
         var weightElement = $('<p></p>');
-
+*/
+        //Tihs is the new Bootstrap-modal
+        var modal = $('<div class="modal" tabindex="-1" role="dialog"</div>');
+          var modalDialog = $('<div class="modal-dialog" role="document"></div>');
+            var modalContent = $('<div class="modal-content"></div>');
+              var modlaHeader = $('<div class="modal-header"></div>');
+                var modalTitle = $('<h5 class="modal-title">Modal title</h5>');
+                var modalCloseHeader = $('<button type="button" class="close" data-dismiss="modal" aria-label="Close">Pokemon Nema</div>');
+                  var modalAriaHidden = $('<span aria-hidden="true">&times;</span>');
+//                </button>
+//              </div>
+              var modalBody = $('<div class="modal-body"></div>');
+                var modalHeight = $ ('<p>Height: </p>');
+                var modalWeight = $ ('<p>Weight: </p>');
+//              </div>
+              var modalFooter = $('<div class="modal-footer"></div>');
+                var modalCloseFooter = $('<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>');
+//              </div>
+//            </div>
+//          </div>
+//        </div>
 
         // Add the new modal content
         titleElement.text(pokemon.name);

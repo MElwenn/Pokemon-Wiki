@@ -26,7 +26,9 @@ var pokemonRepository = (function() { //This is the IIFE wrap
 //                + pokemon.name +
 //            '</button>'
 //        );
-        var $button = $('<button type="button" role="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-container">'
+
+//        var $button = $('<button type="button" role="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-container">'
+        var $button = $('<button type="button" role="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">'
                 + pokemon.name +
               '</button>'
         );
@@ -95,25 +97,26 @@ var pokemonRepository = (function() { //This is the IIFE wrap
         var weightElement = $('<p></p>');
 */
         //Tihs is the new Bootstrap-modal
-        var modal = $('<div class="modal" tabindex="-1" role="dialog"</div>');
-          var modalDialog = $('<div class="modal-dialog" role="document"></div>');
-            var modalContent = $('<div class="modal-content"></div>');
+        var modal = $('<div class="modal" tabindex="-1" role="dialog"></div>'); // transparent background covering the entire screen
+          var modalDialog = $('<div class="modal-dialog" role="document"></div>'); // modal box that appears on top of the background
+            var modalContent = $('<div class="modal-content"></div>');  // Wrap around the modal content
               var modlaHeader = $('<div class="modal-header"></div>');
-                var modalTitle = $('<h5 class="modal-title">Modal title</h5>');
-                var modalCloseHeader = $('<button type="button" class="close" data-dismiss="modal" aria-label="Close">Pokemon Nema</div>');
+                var titleElement = $('<h5 class="modal-title">Modal title</h5>');
+                var closeButtonElementHeader = $('<button type="button" class="close" data-dismiss="modal" aria-label="Close">Pokemon Nema</div>');
                   var modalAriaHidden = $('<span aria-hidden="true">&times;</span>');
 //                </button>
 //              </div>
               var modalBody = $('<div class="modal-body"></div>');
-                var modalHeight = $ ('<p>Height: </p>');
-                var modalWeight = $ ('<p>Weight: </p>');
+                var heightElement = $ ('<p>Height: </p>');
+                var weightElement = $ ('<p>Weight: </p>');
+                var imageElement = $('<img class="img"/>').ready(pokemon);
 //              </div>
               var modalFooter = $('<div class="modal-footer"></div>');
-                var modalCloseFooter = $('<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>');
+                var closeButtonElementFooter = $('<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>');
 //              </div>
-//            </div>
-//          </div>
-//        </div>
+//            '</div>');
+//          '</div>');
+//        '</div>');
 
         // Add the new modal content
         titleElement.text(pokemon.name);
@@ -125,7 +128,8 @@ var pokemonRepository = (function() { //This is the IIFE wrap
         modal.append(imageElement);
         modal.append(heightElement);
         modal.append(weightElement);
-        modal.append(closeButtonElement);
+        modal.append(closeButtonElementHeader);
+        modal.append(closeButtonElementFooter);
 
         $modalContainer.append(modal);
         $modalContainer.addClass("is-visible");

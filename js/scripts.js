@@ -20,10 +20,15 @@ var pokemonRepository = (function() { //This is the IIFE wrap
         var $listItem = $('<li class="container"></li>');
         $response.append($listItem);
 
-        var $button = $(
-            '<button type="button" class="button" data-toggle="modal" data-target="#modal-container">'
+          // This is the old jQuery-Button
+//        var $button = $(
+//            '<button type="button" class="button" data-toggle="modal" data-target="#modal-container">'
+//                + pokemon.name +
+//            '</button>'
+//        );
+        var $button = $('<button type="button" role="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-container">Primary'
                 + pokemon.name +
-            '</button>'
+              '</button>'
         );
         $listItem.append($button);
 

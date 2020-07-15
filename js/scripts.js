@@ -98,25 +98,20 @@ var pokemonRepository = (function() { //This is the IIFE wrap
 */
         //Tihs is the new Bootstrap-modal
         var modal = $('<div class="modal" tabindex="-1" role="dialog"></div>'); // transparent background covering the entire screen
-              var modalHeader = $('<div class="modal-header"></div>');
-                var closeButtonElementHeader = $('<button type="button" class="close" data-dismiss="modal" aria-label="Close">x</div>');
-          var modalDialog = $('<div class="modal-dialog" role="document"></div>'); // modal box that appears on top of the background
-
+            var modalDialog = $('<div class="modal-dialog" role="document"></div>'); // modal box that appears on top of the background
 //            var modalContent = $('<div class="modal-content"></div>');  // Wrap around the modal content
-//              var modalHeader = $('<div class="modal-header"></div>');
-                var titleElement = $('<h2 class="modal-title">Modal title</h2>');
-//                var closeButtonElementHeader = $('<button type="button" class="close" data-dismiss="modal" aria-label="Close">x</div>');
-                  var modalAriaHidden = $('<span aria-hidden="true">&times;</span>');
-//                </button>
-//              </div>
-              var modalBody = $('<div class="modal-body"></div>');
-                var heightElement = $ ('<p>Height: </p>');
-                var weightElement = $ ('<p>Weight: </p>');
-                var imageElement = $('<img class="img"/>').ready(pokemon);
-//              </div>
-              var modalFooter = $('<div class="modal-footer"></div>');
-                var closeButtonElementFooter = $('<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>');
-//              </div>
+                var modalHeader = $('<div class="modal-header"></div>');
+                    var titleElement = $('<h2 class="modal-title">Modal title</h2>');
+                    var closeButtonElementHeader = $('<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></div>');
+
+                var modalBody = $('<div class="modal-body"></div>');
+                    var heightElement = $('<p>Height: </p>');
+                    var weightElement = $('<p>Weight: </p>');
+                    var imageElement = $('<img class="img"/>').ready(pokemon);
+
+                var modalFooter = $('<div class="modal-footer"></div>');
+                    var closeButtonElementFooter = $('<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>');
+//              '</div>');
 //            '</div>');
 //          '</div>');
 //        '</div>');

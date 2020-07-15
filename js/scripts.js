@@ -98,11 +98,14 @@ var pokemonRepository = (function() { //This is the IIFE wrap
 */
         //Tihs is the new Bootstrap-modal
         var modal = $('<div class="modal" tabindex="-1" role="dialog"></div>'); // transparent background covering the entire screen
-          var modalDialog = $('<div class="modal-dialog" role="document"></div>'); // modal box that appears on top of the background
-            var modalContent = $('<div class="modal-content"></div>');  // Wrap around the modal content
-              var modlaHeader = $('<div class="modal-header"></div>');
-                var titleElement = $('<h5 class="modal-title">Modal title</h5>');
+              var modalHeader = $('<div class="modal-header"></div>');
                 var closeButtonElementHeader = $('<button type="button" class="close" data-dismiss="modal" aria-label="Close">x</div>');
+          var modalDialog = $('<div class="modal-dialog" role="document"></div>'); // modal box that appears on top of the background
+
+//            var modalContent = $('<div class="modal-content"></div>');  // Wrap around the modal content
+//              var modalHeader = $('<div class="modal-header"></div>');
+                var titleElement = $('<h2 class="modal-title">Modal title</h2>');
+//                var closeButtonElementHeader = $('<button type="button" class="close" data-dismiss="modal" aria-label="Close">x</div>');
                   var modalAriaHidden = $('<span aria-hidden="true">&times;</span>');
 //                </button>
 //              </div>
@@ -124,11 +127,19 @@ var pokemonRepository = (function() { //This is the IIFE wrap
         heightElement.text(pokemon.height);
         weightElement.text(pokemon.weight);
 
+        modal.append(modalDialog); //nedded?
+//        modal.append(modalContent); //nedded?
+
+        modal.append(modalHeader); //nedded?
         modal.append(titleElement);
+        modal.append(closeButtonElementHeader);
+
+        modal.append(modalBody); //nedded?
         modal.append(imageElement);
         modal.append(heightElement);
         modal.append(weightElement);
-        modal.append(closeButtonElementHeader);
+
+        modal.append(modalFooter);
         modal.append(closeButtonElementFooter);
 
         $modalContainer.append(modal);

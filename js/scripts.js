@@ -88,14 +88,24 @@ var pokemonRepository = (function() { //This is the IIFE wrap
         // Clear all existing modal content
         $modalContainer.empty();
 
-        var modal = $('<div class="modal"></div>');
+        var modalFade = $('<div class="modal fade" id="exampleModalCenter"></div>');
+        var modalDialogCentered = $('<div class="modal-dialog modal-dialog-centered"</div>');
+        var modalContent = $('<div class="modal-content"></div>');
+
+        var modalHeader = $('<div class="modal-header">');
+        var modalTitle = $('<h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>');
         var titleElement = $('<h1></h1>');
-        var closeButtonElement = $('<button class="modal-close" type="modal-close"></button>').text("Close");
-        closeButtonElement.on("click", hideModal);
+        var closeButtonElementHeader = $('<button type="button" class="close" data-dismiss="modal" aria-label="Close">').text("Close");
+        closeButtonElementHeader.on("click", hideModal);
+
+        var modalBody = $('<div class="modal-body"></div>');
         var imageElement = $('<img class="img"/>').ready(pokemon);
         var heightElement = $('<p></p>');
         var weightElement = $('<p></p>');
 
+        var modalFooter =$('<div class="modal-footer">');
+        var closeButtonElementFooter =$('<button type="button" class="btn btn-secondary" data-dismiss="modal"></button>');
+        closeButtonElementFooter.on("click", hideModal);
 
         // Add the new modal content
         titleElement.text(pokemon.name);

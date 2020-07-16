@@ -18,8 +18,26 @@
 <!-- Pokemon List -->
     <ul class="pokemon-list"></ul>
 
-<!-- Bootstrap Button -->
-    
+<!-- Bootstrap Section -->
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-light navbar-expand-md fixed-top" style="background-color: #6699CC;">
+        <!-- Burger Menu -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Navigation links -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="#">Somewhere</a>
+            </div>
+            <!-- Search box -->
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Add a Pokemon name" aria-label="Search">
+              <button class="btn btn-warning my-2 my-sm-0" type="submit">Search</button>
+            </form>
+          </div>
+    </nav> <!-- Navigation bar end -->
 
 <!-- Modal show details -->
     <div id="modal-container"></div>

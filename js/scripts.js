@@ -11,20 +11,31 @@ var pokemonRepository = (function() { //This is the IIFE wrap
         addListItem(pokemon);
     }
 
+    const capitalize = (letter) => {
+        if (typeof letter !== 'string') return '';
+        return letter.charAt(0).toUpperCase() + letter.slice(1);
+    };
+
     function getAll() {
         return pokemonList;
     }
 
     function addListItem(pokemon) { //addListItem
 
-        var $listItem = $('<li class="container"></li>');
-        $response.append($listItem);
+        var $listItem = $('<div class="list-group"></div>');
+        var $button = $('<button type="button" class="list-group-item list-group-item-action">'+ capitalize(pokemon.name) + '</button>');
+        $response.append($button);
 
-        var $button = $('<button type="button" role="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">'
-                + pokemon.name +
-              '</button>'
-        );
-        $listItem.append($button);
+
+//        var $listItem = $('<li class="container"></li>');
+//        var $listItem = $('<li class="list-group-item"></li>');
+//        $response.append($listItem);
+
+//        var $button = $('<button type="button" role="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">'
+//                + pokemon.name +
+//              '</button>'
+//        );
+//        $listItem.append($button);
 
         $button.click(function(){
             showDetails(pokemon);

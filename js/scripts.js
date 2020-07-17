@@ -80,24 +80,25 @@ var pokemonRepository = (function() { //This is the IIFE wrap
         $modalContainer.empty();
 
         //This is the new Bootstrap-modal
-        var modal = $('<div class="modal" tabindex="-1" role="dialog" id="exampleModal"></div>'); // transparent background covering the entire screen
-            var modalDialog = $('<div class="modal-dialog" role="document"></div>'); // modal box that appears on top of the background
-//            var modalContent = $('<div class="modal-content"></div>');  // Wrap around the modal content
-                var modalHeader = $('<div class="modal-header"></div>');
-                    var titleElement = $('<h2 class="modal-title"></h2>');
-                    var closeButtonElementHeader = $('<button type="button" class="close" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
+//                var modal = $('<div class="modal" tabindex="-1" role="dialog" id="modal-container"></div>'); // transparent background covering the entire screen
+                var modal = $('<div class="modal" tabindex="-1" role="dialog" id="exampleModal"></div>'); // transparent background covering the entire screen
+                    var modalDialog = $('<div class="modal-dialog" role="document"></div>'); // modal box that appears on top of the background
+        //            var modalContent = $('<div class="modal-content"></div>');  // Wrap around the modal content
+                        var modalHeader = $('<div class="modal-header text-group"></div>');
+                            var titleElement = $('<h2 class="modal-title text-group"></h2>');
+                            var closeButtonElementHeader = $('<button type="button" class="close text-group" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
 
-                var modalBody = $('<div class="modal-body"></div>');
-                    var heightElement = $('<p>Height: </p>');
-                    var weightElement = $('<p>Weight: </p>');
-                    var imageElement = $('<img class="img"/>').ready(pokemon);
+                        var modalBody = $('<div class="modal-body"></div>');
+                            var heightElement = $('<p>Height: </p>');
+                            var weightElement = $('<p>Weight: </p>');
+                            var imageElement = $('<img class="img"/>').ready(pokemon);
 
-                var modalFooter = $('<div class="modal-footer"></div>');
-                    var closeButtonElementFooter = $('<button type="button" class="btn btn-primary" data-dismiss="modal"  data-toggle="modal" data-target="#exampleModal" aria-label="Close">Close</button>');
-//              '</div>');
-//            '</div>');
-//          '</div>');
-//        '</div>'); //Bootstrap-modal end
+                        var modalFooter = $('<div class="modal-footer"></div>');
+                            var closeButtonElementFooter = $('<button type="button" class="btn btn-primary" data-dismiss="modal"  data-toggle="modal" data-target="#exampleModal" aria-label="Close">Close</button>');
+        //              '</div>');
+        //            '</div>');
+        //          '</div>');
+        //        '</div>'); //Bootstrap-modal end
 
         // Add the new modal content
         titleElement.text(pokemon.name);
@@ -120,6 +121,9 @@ var pokemonRepository = (function() { //This is the IIFE wrap
         modal.append(modalFooter);
         modal.append(closeButtonElementFooter);
 
+//        $exampleModal.append(modal);
+//        $exampleModal.addClass("is-visible");
+
         $modalContainer.append(modal);
         $modalContainer.addClass("is-visible");
 
@@ -135,7 +139,8 @@ var pokemonRepository = (function() { //This is the IIFE wrap
         addListItem: addListItem,
         loadList: loadList,
         loadDetails: loadDetails, //add loadDetails
-        showModal: showModal
+        showModal: showModal,
+        searchBox: searchBox
     }; // return end
 
 })(); // Wrapping IIFE end
@@ -146,3 +151,13 @@ pokemonRepository.loadList().then(function(){
       pokemonRepository.addListItem(pokemon);
   });
 })
+
+// Search-Box functionalities
+//$(document).ready(function(){
+    $('#searchBox').on('keyup', function(){
+        var value = $(this).val().toLowerCase();
+        $('.titleElement').filter(function(){
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+        });
+    });
+//});

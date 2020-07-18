@@ -80,49 +80,38 @@ var pokemonRepository = (function() { //This is the IIFE wrap
         $modalContainer.empty();
 
         //This is the new Bootstrap-modal
-//                var modal = $('<div class="modal" tabindex="-1" role="dialog" id="modal-container"></div>'); // transparent background covering the entire screen
-                var modal = $('<div class="modal" tabindex="-1" role="dialog" id="exampleModal"></div>'); // transparent background covering the entire screen
-                    var modalDialog = $('<div class="modal-dialog" role="document"></div>'); // modal box that appears on top of the background
-        //            var modalContent = $('<div class="modal-content"></div>');  // Wrap around the modal content
-                        var modalHeader = $('<div class="modal-header text-group"></div>');
-                            var titleElement = $('<h2 class="modal-title text-group"></h2>');
-                            var closeButtonElementHeader = $('<button type="button" class="close text-group" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
+        var modal = $('#modal-container'); // transparent background covering the entire screen
+            var modalDialog = $('#modalDialog'); // modal box that appears on top of the background
+            var modalContent = $('#modalContent');  // Wrap around the modal content
 
-                        var modalBody = $('<div class="modal-body"></div>');
-                            var heightElement = $('<p>Height: </p>');
-                            var weightElement = $('<p>Weight: </p>');
-                            var imageElement = $('<img class="img"/>').ready(pokemon);
+                //This is the modal header
+                var modalHeader = $('#modalHeader');
+                    var titleElement = $('#pokemon-name').text(pokemon.name);
+                    var closeButtonElementHeader = $('#modalCloseHeader');
+                modalHeader.append(titleElement);
+                modalHeader.append(closeButtonElementHeader);
 
-                        var modalFooter = $('<div class="modal-footer"></div>');
-                            var closeButtonElementFooter = $('<button type="button" class="btn btn-primary" data-dismiss="modal"  data-toggle="modal" data-target="#exampleModal" aria-label="Close">Close</button>');
-        //              '</div>');
-        //            '</div>');
-        //          '</div>');
-        //        '</div>'); //Bootstrap-modal end
+                //This is the modal body
+                var modalBody = $('#modalBody');
+                    var heightElement = $('#pokemon-height' + pokemon.height * 10 + 'cm');
+                    var weightElement = $('#pokemon-weight' + pokemon.weight * 10 + 'cm');
+                modalBody.append(heightElement);
+                modalBody.append(weightElement);
 
-        // Add the new modal content
-        titleElement.text(pokemon.name);
-        imageElement.attr('src', pokemon.imageUrl);
-        heightElement.text(pokemon.height);
-        weightElement.text(pokemon.weight);
+                var imageElement = $('<img class="img"/>').ready(pokemon);
+                imageElement.attr('src', pokemon.imageUrl);
+                modalBody.append(imageElement);
 
-        modal.append(modalDialog); //nedded?
-//        modal.append(modalContent); //nedded?
+                //This is the modal footer
+                var modalFooter = $('#modalFooter');
+                    var closeButtonElementFooter = $('#modalCloseFooter');
+                modalFooter.append(closeButtonElementFooter);
 
-        modal.append(modalHeader); //nedded?
-        modal.append(titleElement);
-        modal.append(closeButtonElementHeader);
-
-        modal.append(modalBody); //nedded?
-        modal.append(imageElement);
-        modal.append(heightElement);
-        modal.append(weightElement);
-
-        modal.append(modalFooter);
-        modal.append(closeButtonElementFooter);
-
-//        $exampleModal.append(modal);
-//        $exampleModal.addClass("is-visible");
+            modalContent.append(modalHeader); //nedded to have influence on position of contained elements?
+            modalContent.append(modalBody);   //nedded to have influence on position of contained elements?
+            modal.append(modalFooter);        //nedded to have influence on position of contained elements?
+        modal.append(modalDialog);            //nedded to have influence on position of contained elements?
+        modal.append(modalContent);           //nedded to have influence on position of contained elements?
 
         $modalContainer.append(modal);
         $modalContainer.addClass("is-visible");

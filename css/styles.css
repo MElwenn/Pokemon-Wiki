@@ -81,14 +81,16 @@ html { /* das hier kommt spaeter weg */
   margin-top: 0;
 }
 
+.modal h5 {
+  text-align: left;
+}
+
 .modal p {
   margin-bottom: 0;
 }
 
 .img {
 	width: 30%;
-	float: right;
-  background-color: #6699CC;
 }
 
 /* design modal end */

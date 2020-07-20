@@ -94,7 +94,9 @@ var pokemonRepository = (function() { //This is the IIFE wrap
                 var modalHeader = $('#modalHeader');
 //                    var titleElement = $('.pokemon-name').text(pokemon.name);
                     var titleElement = $('<h5>' + pokemon.name + '</h5>');
-                    var closeButtonElementHeader = $('#modalCloseHeader');
+                    modalHeader.append(titleElement);
+//                    var closeButtonElementHeader = $('#modalCloseHeader');
+
 //                modalHeader.append(titleElement);
 //                modalHeader.append(closeButtonElementHeader);
 
@@ -102,8 +104,8 @@ var pokemonRepository = (function() { //This is the IIFE wrap
 //                var modalBody = $('.modalBody');
                 var $modalBody = $('#modalBody');
 
-                $modalBody.html('Height: ' + pokemon.height * 10 + ' cm' + '<br/><br/>' +
-                                'Weight: ' + pokemon.weight / 10 + ' g' + '<br/><br/>'
+                $modalBody.html('Height: ' + pokemon.height + '<br/><br/>' +
+                                'Weight: ' + pokemon.weight + '<br/><br/>'
 
                 );
 
@@ -116,7 +118,7 @@ var pokemonRepository = (function() { //This is the IIFE wrap
 
 //                var imageElement = $('<img class="img"/>').ready(pokemon);
 //                imageElement.attr('src', pokemon.imageUrl);
-                    var imageElement = $("<img class='modal-image' src='" + pokemon.imageUrl + "'>");
+                    var imageElement = $("<img class='modal-image img' src='" + pokemon.imageUrl + "'>");
                     $modalBody.append(imageElement);
 
                 //This is the modal footer

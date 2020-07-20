@@ -85,7 +85,7 @@ var pokemonRepository = (function() { //This is the IIFE wrap
         //This is the new Bootstrap-modal (replaced all # with .)
 //        var modal = $('#myModal').modal(options); // according to https://getbootstrap.com/docs/4.2/components/modal/
 //        var modal = $('.modal-container');.modal('show'); // according to https://getbootstrap.com/docs/4.2/components/modal/
-        var modal = $('#modal-container');//.modal('show'); // transparent background covering the entire screen
+        var modal = $('#modal-container').modal('show'); // transparent background covering the entire screen
 //        var $modalContainer = $('#modal-container');
             var modalDialog = $('#modalDialog'); // modal box that appears on top of the background
             var modalContent = $('#modalContent');  // Wrap around the modal content

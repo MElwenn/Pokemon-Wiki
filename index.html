@@ -1,73 +1,75 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Simple JavaScript App</title>
-    <meta charset="utf-8"/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	  <link aria-hidden="true" rel="shortcut icon" href="img/favicon.ico"/>
-	  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet"/><!--normalizes the css code-->
-    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet"/>
-	  <link rel="stylesheet" type="text/css" href="css/styles.css">
-	  <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
+    <head>
+        <title>Simple JavaScript App</title>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    	  <link aria-hidden="true" rel="shortcut icon" href="img/favicon.ico"/>
+    	  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet"/><!--normalizes the css code-->
+        <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet"/>
+    	  <link rel="stylesheet" type="text/css" href="css/styles.css">
+    	  <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
 
-<!-- body section -->
+    <!-- body section -->
     <body>
-    <br>
-    <br>
-    <h1 class="heading1">Pokedex</h1>
+        <h1 class="heading1">Pokedex</h1>
 
-<!-- Pokemon List -->
-    <ul class="pokemon-list" id="myUL"></ul>
+        <!-- Pokemon List -->
+        <ul class="pokemon-list" id="myUL"></ul>
 
-<!-- Bootstrap Section -->
-    <!-- Navigation bar -->
-    <nav class="navbar navbar-light navbar-expand-md fixed-top" style="background-color: #6699CC;">
-        <!-- Burger Menu -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <!-- Navigation links -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <div class="navbar-nav">
-                <a href="index.html" class="nav-item nav-link active"  role="link">Home <span class="sr-only">(current)</span></a>
-                <a href="https://melwenn.github.io/portfoliowebsite/index.html" class="nav-item nav-link"  target="_blank" role="link">Developer</a>
+        <!-- Bootstrap Section -->
+        <!-- Navigation bar -->
+        <nav class="navbar navbar-light navbar-expand-md fixed-top" style="background-color: #6699CC;">
+            <!-- Burger Menu -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Navigation links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav">
+                    <a href="index.html" class="nav-item nav-link active"  role="link">Home <span class="sr-only">(current)</span></a>
+                    <a href="https://melwenn.github.io/portfoliowebsite/index.html" class="nav-item nav-link"  target="_blank" role="link">Developer</a>
+                </div>
+                <!-- Search box -->
+                <form class="form-inline my-2 my-lg-2">
+                    <input class="form-control mr-sm-2" type="search" id="myInput" placeholder="Search for a Pokemon name" aria-label="Search" onkeyup="filterResult()">
+                    <button class="btn btn-warning my-2 my-sm-0" type="submit">Reset input</button>
+                </form>
+            </div>
+        </nav>
+
+        <!-- Modal show details bootstrap version -->
+        <!-- Modal HTML Skeleton -->
+        <div class="modal fade" id="modal-container" tabindex="-1" role="dialog" data-backdrop fade show="false" aria-labelledby="pokemon-name" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" id="modalDialog" role="document">
+                <div class="modal-content" id="modalContent">
+                    <div class="modal-header text-group" id="modalHeader">
+                        <h5 class="modal-title text-group" id="pokemon-name"></h5>
+                    </div>
+                    <div class="modal-body" id="modalBody">
+                        <p class="modal p" id="pokemon-height">'Height: '</p>
+                        <p class="modal p" id="pokemon-weight"></p>
+                    </div>
+                    <div class="modal-footer" id="modalFooter">
+                        <button type="button" class="btn btn-secondary" id="modalCloseFooter" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </nav>
 
-<!-- Modal show details bootstrap version -->
-    <!-- Modal HTML Skeleton -->
-    <div class="modal fade" id="modal-container" tabindex="-1" role="dialog" data-backdrop fade show="false" aria-labelledby="pokemon-name" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" id="modalDialog" role="document">
-            <div class="modal-content" id="modalContent">
-                <div class="modal-header text-group" id="modalHeader">
-                    <h5 class="modal-title text-group" id="pokemon-name"></h5>
-                </div>
-                <div class="modal-body" id="modalBody">
-                    <p class="modal p" id="pokemon-height">'Height: '</p>
-                    <p class="modal p" id="pokemon-weight"></p>
-                </div>
-                <div class="modal-footer" id="modalFooter">
-                    <button type="button" class="btn btn-secondary" id="modalCloseFooter" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
+        <!-- JavaScript -->
+        <!-- script to load jQuery -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous">
+        </script>
 
-<!-- JavaScript -->
-    <!-- script to load jQuery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous">
-    </script>
+        <!-- script to load bootstrap -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-    <!-- script to load bootstrap -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-
-    <!-- script to load js/scripts -->
-    <script src="js/scripts.js"></script>
-  </body>
+        <!-- script to load js/scripts -->
+        <script src="js/scripts.js"></script>
+    </body>
 </html>

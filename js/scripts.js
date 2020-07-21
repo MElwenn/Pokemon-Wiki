@@ -3,8 +3,8 @@
 var pokemonRepository = (function() { //This is the IIFE wrap
     var pokemonList = [];
     var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150'; //define apiURL
-    var $response = $('#myUL'); // = $('.pokemon-list');
-    var $modalContainer = $('#modal-container'); //(replaced all # with .)
+    var $response = $('#myUL'); // used #myUL instead of $('.pokemon-list'); to meet boostrap notation
+    var $modalContainer = $('#modal-container');
 
     function add (pokemon) { // function to load the list of Pokemons
         pokemonList.push(pokemon);
@@ -25,10 +25,6 @@ var pokemonRepository = (function() { //This is the IIFE wrap
         var $listItem = $('<div class="list-group"></div>');
         var $button = $('<button type="button" class="list-group-item list-group-item-action data-toggle="modal" data-target="#modal-container">'+ capitalize(pokemon.name) + '</button>');
         $response.append($button);
-
-//        $button.click(function(){
-//            showDetails(pokemon);
-//        });
         $button.on('click', function(){
             showDetails(pokemon);
         });
@@ -79,62 +75,32 @@ var pokemonRepository = (function() { //This is the IIFE wrap
     } // showDetails end
 
     function showModal(pokemon) {
-        // Clear all existing modal content
-//        $modalContainer.empty();
 
-        //This is the new Bootstrap-modal (replaced all # with .)
-//        var modal = $('#myModal').modal(options); // according to https://getbootstrap.com/docs/4.2/components/modal/
-//        var modal = $('.modal-container');.modal('show'); // according to https://getbootstrap.com/docs/4.2/components/modal/
-        var modal = $('#modal-container').modal('show'); // transparent background covering the entire screen
-//        var $modalContainer = $('#modal-container');
-            var modalDialog = $('#modalDialog'); // modal box that appears on top of the background
-            var modalContent = $('#modalContent');  // Wrap around the modal content
+        // This is the modal container
+        var modal = $('#modal-container').modal('show'); // transparent blury background covering the entire screen
+        var modalDialog = $('#modalDialog'); // modal box that appears on top of the background
+        var modalContent = $('#modalContent');  // Wrap around the modal content
 
-                //This is the modal header
-                var modalHeader = $('#modalHeader');
-//                    var titleElement = $('.pokemon-name').text(pokemon.name);
-                    var titleElement = $('<h5>' + pokemon.name + '</h5>');
-                    modalHeader.append(titleElement);
-//                    var closeButtonElementHeader = $('#modalCloseHeader');
+        //This is the modal header
+        var modalHeader = $('#modalHeader');
+        var titleElement = $('<h5>' + pokemon.name + '</h5>');
+        modalHeader.append(titleElement);
 
-//                modalHeader.append(titleElement);
-//                modalHeader.append(closeButtonElementHeader);
+        //This is the modal body
+        var $modalBody = $('#modalBody');
+        $modalBody.html ('Height: ' + pokemon.height + '<br/><br/>' +
+                         'Weight: ' + pokemon.weight + '<br/><br/>'
+        );
+        var imageElement = $("<img class='modal-image img' src='" + pokemon.imageUrl + "'>");
+        $modalBody.append(imageElement);
 
-                //This is the modal body
-//                var modalBody = $('.modalBody');
-                var $modalBody = $('#modalBody');
+        //This is the modal footer
+        var modalFooter = $('#modalFooter');
+        var closeButtonElementFooter = $('#modalCloseFooter');
 
-                $modalBody.html('Height: ' + pokemon.height + '<br/><br/>' +
-                                'Weight: ' + pokemon.weight + '<br/><br/>'
-
-                );
-
-//                    var heightElement = $('.pokemon-height' + pokemon.height * 10 + 'cm');
-/*                    var heightElement = $('<p>Height: ' + pokemon.height * 10 + ' cm</p>'); */ //attempt to "querying the existing "skeleton" and adding elements to it"
-//                    var weightElement = $('.pokemon-weight' + pokemon.weight * 10 + 'cm');
-/*                    var weightElement = $('<p>Weight: ' + pokemon.weight * 10 + ' g</p>'); */  //attempt to "querying the existing "skeleton" and adding elements to it"
-//                modalBody.append(heightElement);
-//                modalBody.append(weightElement);
-
-//                var imageElement = $('<img class="img"/>').ready(pokemon);
-//                imageElement.attr('src', pokemon.imageUrl);
-                    var imageElement = $("<img class='modal-image img' src='" + pokemon.imageUrl + "'>");
-                    $modalBody.append(imageElement);
-
-                //This is the modal footer
-                var modalFooter = $('#modalFooter');
-                    var closeButtonElementFooter = $('#modalCloseFooter');
-//                modalFooter.append(closeButtonElementFooter);
-
-//            modalContent.append(modalHeader); //nedded to have influence on position of contained elements?
-//            modalContent.append(modalBody);   //nedded to have influence on position of contained elements?
-//            modal.append(modalFooter);        //nedded to have influence on position of contained elements?
-//        modal.append(modalDialog);            //nedded to have influence on position of contained elements?
-//        modal.append(modalContent);           //nedded to have influence on position of contained elements?
-
+        // add modal to modal container
         $modalContainer.append(modal);
         $modalContainer.addClass("is-visible");
-
     } // showModal end
 
     function hideModal() {

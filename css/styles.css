@@ -1,3 +1,4 @@
+/* This section is used for the pokemon list and header */
 body {
     background-color: #F5F5F5;
     color: #666666;
@@ -23,17 +24,15 @@ body {
   padding: 20px;
 }
 
-/* This s ection is used for design of the modal only */
-html { /* das hier kommt spaeter weg */
+/* This section is used for design of the modal only */
+html {
   font-family: Arial, sans-serif;
 }
 
-/*#exampleModal { */
 #modal-container {
   display: none;
 }
 
-/*#exampleModal.is-visible { */
 #modal-container.is-visible {
   position: fixed;
   padding: 20px;
@@ -44,8 +43,8 @@ html { /* das hier kommt spaeter weg */
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
 
-  /* to show it above other content */
-  z-index: 999;
+  /* to show it above other content (attn: this causes an issue because that bootstrap adds <div class="modal-backdrop fade show"> overlapping the modal)*/
+  z-index: 999; /* resolved by adding this to the HTML-file: data-backdrop fade show="false" which causes an error highlighted by HTML-linter */
 
   /* to allow scrolling if the screen is not high enough*/
   overflow: auto;
@@ -55,60 +54,7 @@ html { /* das hier kommt spaeter weg */
   text-align: center;
 }
 
-.modal {
-  margin: auto;
-  display: inline-block;
-  box-sizing: border-box;
-  border-radius: 8px;
-  background: #F5F5F5;
-  padding: 15px;
-  width: 100%;
-  max-width: 700px;
-  text-align: left;
-}
-
-.modal-close {
-  float: right;
-  top: 0;
-  -webkit-appearance: none;
-  border: 0;
-  background: none;
-  color: #666666;
-  text-decoration: none;
-}
-
-.modal h1 {
-  margin-top: 0;
-}
-
-.modal h5 {
-  text-align: left;
-}
-
-.modal p {
-  margin-bottom: 0;
-}
-
 .img {
 	width: 30%;
 }
-
 /* design modal end */
-
-.selected{
-  border: 5px grey solid;
-}
-
-.button {
-  font-family: inherit;
-  background-color: #6699CC;
-  color: white;
-  text-decoration: none;
-  text-align: center;
-  padding: 10px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-  border: none;
-  transition: 0.2s opacity;
-  white-space: nowrap; /* aviod the button to line break */
-}

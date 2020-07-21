@@ -80,10 +80,11 @@ var pokemonRepository = (function() { //This is the IIFE wrap
         var modal = $('#modal-container').modal('show'); // transparent blury background covering the entire screen
         var modalDialog = $('#modalDialog'); // modal box that appears on top of the background
         var modalContent = $('#modalContent');  // Wrap around the modal content
-
         //This is the modal header
         var modalHeader = $('#modalHeader');
+        modalHeader.empty();
         var titleElement = $('<h5>' + pokemon.name + '</h5>');
+
         modalHeader.append(titleElement);
 
         //This is the modal body
@@ -97,15 +98,7 @@ var pokemonRepository = (function() { //This is the IIFE wrap
         //This is the modal footer
         var modalFooter = $('#modalFooter');
         var closeButtonElementFooter = $('#modalCloseFooter');
-
-        // add modal to modal container
-        $modalContainer.append(modal);
-        $modalContainer.addClass("is-visible");
     } // showModal end
-
-    function hideModal() {
-        $modalContainer.removeClass("is-visible");
-    }
 
     return { //return all items from the pokemonList to make it available outside the IIFE
         add: add,
